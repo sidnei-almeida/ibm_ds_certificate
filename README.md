@@ -79,7 +79,7 @@ cd ibm_ds_certificate
 
 2. Instale as dependências necessárias:
 ```bash
-pip install jupyter pandas numpy matplotlib scikit-learn
+pip install -r requirements.txt
 ```
 
 3. Execute o notebook:
@@ -92,9 +92,23 @@ jupyter notebook DataScienceEcosystem.ipynb
 ```
 ibm_ds_certificate/
 ├── DataScienceEcosystem.ipynb    # Notebook principal com o conteúdo do curso
+├── tesla_data.ipynb             # Análise de dados financeiros (Tesla e GME)
 ├── README.md                     # Documentação do projeto
-└── requirements.txt              # Dependências do projeto (se aplicável)
+└── requirements.txt              # Dependências do projeto
 ```
+
+## 📈 Projetos Incluídos
+
+### 1. Data Science Tools and Ecosystem
+- Visão geral do ecossistema de Data Science
+- Linguagens, bibliotecas e ferramentas essenciais
+- Exemplos práticos em Python
+
+### 2. Tesla & GME Stock Analysis
+- Extração de dados financeiros usando `yfinance`
+- Web scraping para dados de receita
+- Visualização de preços de ações
+- Análise comparativa entre Tesla e GameStop
 
 ## 🏆 Certificação
 
