@@ -4,8 +4,8 @@
   </a>
 </p>
 
-<h1 align="center">IBM Data Science — repositório da certificação</h1>
-<h3 align="center">Laboratórios Coursera / Skills Network · notebooks, dados e exercícios avaliados</h3>
+<h1 align="center">IBM Data Science Professional Certificate — Portfolio Repository</h1>
+<h3 align="center">Coursera / IBM Skills Network labs, notebooks, assessed exercises, and datasets</h3>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
@@ -15,74 +15,145 @@
 </p>
 
 <p align="center">
-  <a href="#readme-sobre">Sobre</a> ·
-  <a href="#readme-conteudo">Conteúdo</a> ·
-  <a href="#readme-trilha">Trilha</a> ·
-  <a href="#readme-tecno">Stack</a> ·
-  <a href="#readme-exec">Como executar</a> ·
-  <a href="#readme-estrutura">Estrutura</a> ·
-  <a href="#readme-cert">Certificação</a> ·
-  <a href="#readme-autor">Autor</a>
+  <a href="#about">About</a> ·
+  <a href="#notebook-processes">Notebook processes</a> ·
+  <a href="#artifacts">Artifacts</a> ·
+  <a href="#learning-path">Learning path</a> ·
+  <a href="#stack">Stack</a> ·
+  <a href="#how-to-run">How to run</a> ·
+  <a href="#structure">Structure</a> ·
+  <a href="#certification">Certification</a> ·
+  <a href="#author">Author</a>
 </p>
 
 ---
 
-<a id="readme-sobre"></a>
-## Sobre
+<a id="about"></a>
+## About
 
-Este repositório agrega **notebooks e ficheiros** utilizados ao longo do **IBM Data Science Professional Certificate** (Coursera / **IBM Skills Network**): desde o módulo introdutório de **ferramentas e ecossistema** até **visualização de dados**, **projetos práticos** (Titanic, imóveis em King County) e análise financeira com **yfinance** — sempre com foco pedagógico e entregáveis dos laboratórios oficiais.
+This repository gathers **notebooks and assets** used across the **IBM Data Science Professional Certificate** (Coursera / **IBM Skills Network**): from introductory **tools and ecosystem** topics through **data visualization**, **hands-on projects** (Titanic classification, King County housing regression), and **financial data** workflows with **yfinance** — aligned with official lab prompts and datasets.
 
-> Os enunciados e datasets seguem as versões distribuídas nos cursos IBM (URLs Cloud Object Storage / JupyterLite quando aplicável).
-
----
-
-<a id="readme-conteudo"></a>
-## Conteúdo do repositório
-
-| Artefacto | Descrição |
-|-----------|-----------|
-| `notebooks/DataScienceEcosystem.ipynb` | **Data Science Tools** — linguagens, bibliotecas, ferramentas open-source, exemplos em Python (ecossistema). |
-| `notebooks/tesla_data.ipynb` | Dados de ações (**yfinance**), extração e visualização (ex.: Tesla / contexto financeiro do curso). |
-| `notebooks/DV0101EN-Final-Assignment-Part1-v2.ipynb` | **DV0101EN** — visualizações com **Matplotlib**, **Seaborn** e **Folium** (parte 1 do trabalho final da disciplina). |
-| `scripts/DV0101EN-Final-Assign-Part-2-Questions.py` | Parte 2 do mesmo módulo — exercícios em script Python. |
-| `notebooks/House_Sales_in_King_Count_USA-*.jupyterlite.ipynb` | **Projeto final** — vendas de casas em **King County** (regressão / EDA conforme enunciado); lê `data/kc_house_data_NaN.csv` (caminho relativo ao notebook). |
-| `data/kc_house_data_NaN.csv` | Dataset associado ao projeto de imóveis (tratamento de em falta conforme o lab). |
-| `notebooks/Practice Project-v1.ipynb` | **Practice Project** — **Titanic**: *Random Forest* vs *Logistic Regression*, pipeline, `GridSearchCV`, matriz de confusão, importância de *features*. |
-| `figures/*.png` | Gráficos exportados dos laboratórios (referências visuais). |
-| `requirements.txt` | Dependências Python para executar os notebooks localmente. |
+> Assignments follow IBM course versions (Cloud Object Storage URLs and JupyterLite where applicable).
 
 ---
 
-<a id="readme-trilha"></a>
-## Trilha de aprendizagem (visão geral)
+<a id="notebook-processes"></a>
+## Notebook processes (what each lab actually does)
+
+### `DataScienceEcosystem.ipynb` — tools and ecosystem
+
+- Introduces **languages**, **libraries**, and **open-source tools** commonly used in data science.
+- Short **Python** examples (arithmetic, simple conversions) to verify the runtime.
+- **No analytical dataset pipeline** — foundation for the rest of the certificate.
+
+### `tesla_data.ipynb` — market data and HTML tables
+
+- **Extract stock time series** with **yfinance** (e.g. Tesla, GameStop as in the prompts): download, reset index, inspect.
+- **Parse revenue or supplementary tables** from web pages with **requests** + **BeautifulSoup** (course pattern).
+- **Clean** scraped frames (drop bad rows, normalize strings to numeric where required).
+- **Plot** price history to relate **price dynamics** to the narrative questions in the lab.
+
+### `DV0101EN-Final-Assignment-Part1-v2.ipynb` — visualization capstone (Part 1)
+
+- Works with the **historical automobile sales** dataset from the Skills Network URL in the notebook.
+- **EDA-style workflow:** load CSV, inspect columns, filter periods (e.g. recession vs. non-recession), aggregate by **vehicle type** or year.
+- **Plot** with **Matplotlib** and **Seaborn**: line charts, bar charts, scatter, composite **subplots**, and **bubble** encodings where required.
+- **Folium** section (per assignment): geographic summaries when the prompt asks for map-based visuals.
+- Exported PNGs for reference are stored under **`figures/`** (see below).
+
+### `scripts/DV0101EN-Final-Assign-Part-2-Questions.py` — Part 2 (script)
+
+- Same DV0101EN module, **non-notebook** delivery: answers exercises in a **`.py`** file.
+- Typically **loads** assignment data via **HTTP** (`requests`) into memory, then applies **pandas** operations and prints or saves results as the rubric expects.
+
+### `House_Sales_in_King_Count_USA-*.jupyterlite.ipynb` — King County housing (regression project)
+
+Structured in **modules** matching the methodology track:
+
+1. **Import datasets** — reads `../data/kc_house_data_NaN.csv` (local path relative to `notebooks/`; JupyterLite users may download into the browser environment instead).
+2. **Data wrangling** — handle **missing values**, type fixes, and feature cleanup suitable for regression.
+3. **Exploratory data analysis** — distributions, correlations, relationships between **price** and **housing attributes** (sqft, bedrooms, waterfront, etc., per dataset columns).
+4. **Model development** — train **regression** models (e.g. linear / polynomial pipelines as in the lab) to predict **price** or related targets.
+5. **Model evaluation and refinement** — **R²**, residual thinking, and refinement steps (e.g. cross-validation / polynomial degree selection as instructed).
+
+### `Practice Project-v1.ipynb` — Titanic survival (classification)
+
+- **Binary classification** on the classic Titanic survival problem.
+- **Preprocessing:** imputation, encoding categoricals, feature scaling as needed.
+- **Pipelines** in **scikit-learn** combining transformers and estimators.
+- **Compare** models such as **Random Forest** vs **Logistic Regression** with **cross-validation**.
+- **Hyperparameter search** with **`GridSearchCV`** where the lab requires it.
+- **Evaluate** with **accuracy**, **confusion matrix**, and **feature importance** where applicable.
+
+---
+
+<a id="artifacts"></a>
+## Artifacts
+
+| Path | Description |
+|------|-------------|
+| `notebooks/DataScienceEcosystem.ipynb` | Tools, languages, libraries, short Python checks |
+| `notebooks/tesla_data.ipynb` | yfinance + web scraping + stock plots |
+| `notebooks/DV0101EN-Final-Assignment-Part1-v2.ipynb` | Matplotlib, Seaborn, Folium (Part 1) |
+| `scripts/DV0101EN-Final-Assign-Part-2-Questions.py` | DV0101EN Part 2 exercises |
+| `notebooks/House_Sales_in_King_Count_USA-*.jupyterlite.ipynb` | King County regression project |
+| `data/kc_house_data_NaN.csv` | Housing dataset (with NaN handling per lab) |
+| `notebooks/Practice Project-v1.ipynb` | Titanic — ML pipelines and comparison |
+| `figures/*.png` | Exported plots from visualization labs (reference) |
+| `requirements.txt` | Python dependencies for local runs |
+
+### Sample figures (DV0101EN — automobile sales / recession analysis)
+
+The PNG files in **`figures/`** accompany the **visualization assignment** (recession-era sales, GDP context, slices by vehicle type). They are **not** stock charts for `tesla_data.ipynb`.
+
+<p align="center">
+  <img src="figures/GDP_Variation_Comparison.png" width="420" alt="GDP variation comparison" />
+  &nbsp;&nbsp;
+  <img src="figures/Average_Sales_Comparison_Recession_vs_NonRecession.png" width="420" alt="Average sales recession vs non-recession" />
+</p>
+<p align="center">
+  <img src="figures/Bar_Chart.png" width="380" alt="Bar chart" />
+  &nbsp;&nbsp;
+  <img src="figures/Line_plot_3.png" width="380" alt="Line plot" />
+</p>
+<p align="center">
+  <img src="figures/Scatter.png" width="380" alt="Scatter plot" />
+  &nbsp;&nbsp;
+  <img src="figures/Subplot.png" width="420" alt="Subplots" />
+</p>
+
+---
+
+<a id="learning-path"></a>
+## Learning path (high level)
 
 ```mermaid
 flowchart LR
-  A[Ferramentas e\necossistema] --> B[Python / dados\nyfinance / EDA]
-  B --> C[Visualização\nMatplotlib · Seaborn · Folium]
-  C --> D[ML supervisionado\nTitanic · pipelines]
-  D --> E[Projeto King County\nregressão]
+  A[Tools & ecosystem] --> B[Python data\nyfinance & scraping]
+  B --> C[Visualization\nMatplotlib · Seaborn · Folium]
+  C --> D[Supervised ML\nTitanic · pipelines]
+  D --> E[King County\nregression project]
 ```
 
 ---
 
-<a id="readme-tecno"></a>
-## Stack e bibliotecas
+<a id="stack"></a>
+## Stack
 
-| Área | Ferramentas (indicativas) |
-|------|---------------------------|
+| Area | Tools (indicative) |
+|------|--------------------|
 | **Core** | Python, Jupyter, `pandas`, `numpy` |
-| **Visualização** | `matplotlib`, `seaborn`, `plotly` |
-| **ML** | `scikit-learn` (pipelines, `GridSearchCV`, classificação e regressão) |
-| **Dados externos** | `yfinance`, `requests`, `beautifulsoup4` |
-| **Ambiente** | `jupyter`, `notebook`, `ipykernel` |
+| **Visualization** | `matplotlib`, `seaborn`, `plotly`, `folium` |
+| **ML** | `scikit-learn` (pipelines, `GridSearchCV`, classification & regression) |
+| **External data** | `yfinance`, `requests`, `beautifulsoup4` |
+| **Environment** | `jupyter`, `notebook`, `ipykernel` |
 
-Lista instalável consolidada em **`requirements.txt`**.
+Install everything with **`pip install -r requirements.txt`**.
 
 ---
 
-<a id="readme-exec"></a>
-## Como executar
+<a id="how-to-run"></a>
+## How to run
 
 ```bash
 git clone https://github.com/sidnei-almeida/ibm_ds_certificate.git
@@ -94,10 +165,10 @@ source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
 jupyter notebook
-# ou: jupyter lab
+# or: jupyter lab
 ```
 
-Na raiz do repositório, abre os ficheiros em **`notebooks/`** e corre as células na ordem do laboratório. Para o script da parte 2:
+From the repo root, open notebooks under **`notebooks/`** and run cells in lab order. For Part 2 of DV0101EN:
 
 ```bash
 python scripts/DV0101EN-Final-Assign-Part-2-Questions.py
@@ -105,14 +176,14 @@ python scripts/DV0101EN-Final-Assign-Part-2-Questions.py
 
 ---
 
-<a id="readme-estrutura"></a>
-## Estrutura do repositório
+<a id="structure"></a>
+## Repository structure
 
 ```
 ibm_ds_certificate/
 ├── data/
 │   └── kc_house_data_NaN.csv
-├── figures/              # gráficos exportados (PNG)
+├── figures/                 # exported PNG plots (reference)
 ├── notebooks/
 │   ├── DataScienceEcosystem.ipynb
 │   ├── tesla_data.ipynb
@@ -127,37 +198,37 @@ ibm_ds_certificate/
 
 ---
 
-<a id="readme-cert"></a>
-## Certificação
+<a id="certification"></a>
+## Certification
 
-O **IBM Data Science Professional Certificate** (Coursera) cobre, entre outros tópicos: fundamentos de Data Science, ferramentas, metodologia, Python, SQL, análise e visualização de dados, machine learning e **projeto final** integrador.
+The **IBM Data Science Professional Certificate** (Coursera) covers foundations of data science, tools, methodology, Python, SQL, analysis and visualization, machine learning, and a **capstone-style** integrator project.
 
-Este repositório é **material de estudo e portfólio** — não substitui o certificado oficial; a conclusão é validada pela plataforma Coursera / IBM.
+This repo is **study and portfolio material** — it does not replace the official certificate; completion is validated by Coursera / IBM.
 
 ---
 
 ## Disclaimer
 
-Uso **educacional**. Os notebooks reproduzem exercícios dos cursos IBM; **dados financeiros** (ações) e **resultados de modelos** são ilustrativos e **não** constituem recomendação de investimento.
+**Educational use only.** Course exercises **do not** constitute investment advice. Financial series and model outputs are **illustrative**.
 
 ---
 
-<a id="readme-autor"></a>
-## Autor
+<a id="author"></a>
+## Author
 
 | | |
 | --- | --- |
-| **Nome** | **Sidnei Alves de Almeida** |
-| **Perfil** | Cientista de Dados · Python · Machine Learning |
+| **Name** | **Sidnei Alves de Almeida** |
+| **Profile** | Data scientist · Python · machine learning |
 | **LinkedIn** | [Sidnei Almeida](https://www.linkedin.com/in/saaelmeida93/) |
 | **GitHub** | [@sidnei-almeida](https://github.com/sidnei-almeida) |
 
 ---
 
-## Créditos
+## Credits
 
-- **IBM** e **Coursera** — programa *IBM Data Science Professional Certificate* e conteúdos **Skills Network**.
-- Comunidades open source: **Project Jupyter**, **NumPy**, **pandas**, **scikit-learn**, etc.
+- **IBM** and **Coursera** — *IBM Data Science Professional Certificate* and **Skills Network** content.
+- Open-source communities: **Project Jupyter**, **NumPy**, **pandas**, **scikit-learn**, and others.
 
 <p align="center">
   <a href="https://skills.network" target="_blank" rel="noopener noreferrer">
@@ -166,9 +237,9 @@ Uso **educacional**. Os notebooks reproduzem exercícios dos cursos IBM; **dados
 </p>
 
 <p align="center">
-  <sub>Transformar dados em insights, insights em conhecimento, conhecimento em impacto.</sub>
+  <sub>Turning data into insight and insight into impact.</sub>
 </p>
 
 <p align="center">
-  Se este repositório foi útil, considera dar uma ⭐ no GitHub.
+  If this repository helped you, consider starring it on GitHub.
 </p>
